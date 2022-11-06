@@ -8,7 +8,7 @@ const [loadMore,setLoadMore] = useState(true)
 const [searchOpen,setSearchOpen] = useState(false)
 
   return (
-    <div className='px-[30px] bg-black min-h-screen scrollbar-hide'  >
+    <div className='  bg-black min-h-screen max-h-screen overflow-auto hide-scrollbar'  >
         <TopSection  {...{loadMore,setLoadMore,searchOpen,setSearchOpen}}/>
         <Home {...{loadMore,setLoadMore,searchOpen,setSearchOpen}}/>  
     </div>

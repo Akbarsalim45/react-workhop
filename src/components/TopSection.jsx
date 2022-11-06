@@ -15,10 +15,9 @@ const TopSection = ({setLoadMore,searchOpen,setSearchOpen}) => {
     dispatch(getData())
     setLoadMore(true)
   }
+
   useEffect(() => {
-    if(searchOpen){
-      inputEl.current.focus()
-    }
+    if(searchOpen) inputEl.current.focus()
   }, [searchOpen])
   
   const handleSearch = () => {
@@ -28,16 +27,19 @@ const TopSection = ({setLoadMore,searchOpen,setSearchOpen}) => {
     }
     setSearchOpen(true)
   }
+
   const handleKeyPress = (e)=>{
     if(e.key =="Enter" && input){
       handleSearch()
     }
   }
+
+
   return (
     <div 
-      className="h-[100px] text-white 
+      className="h-[100px] text-white px-[30px] bg-black 
         flex justify-between items-center 
-        mb-[36px] sticky top-0 overflow-hidden z-10
+         sticky top-0 overflow-hidden z-10
         bg-[url('public/images/nav_bar.png')]
         " >
         <div className="left flex gap-[10px] items-center" onKeyDown={handleKeyPress}>

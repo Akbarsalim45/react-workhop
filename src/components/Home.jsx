@@ -9,20 +9,17 @@ import { getData,addData,loadJson } from '../redux/homeSlice'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
-const Home = ({loadMore,setLoadMore,searchOpen}) => {
-  // const {page:{content-items}}=Data1
-const dispatch = useDispatch()
-const {displayData,totalData,totalNo} = useSelector(state => state.home)
+  const Home = ({loadMore,setLoadMore,searchOpen}) => {
+  const dispatch = useDispatch()
+  const {displayData,totalData,totalNo} = useSelector(state => state.home)
 
 
-const initialData = Data1?.page?.['content-items']?.content
+  const initialData = Data1?.page?.['content-items']?.content
 
   useEffect(()=>{
     dispatch(getData())
   },[])
 
-  console.log(Data2)
-  console.log(displayData?.length)
 
   const fetchMoreData =()=>{
     let itemPerPage = 20
@@ -33,7 +30,6 @@ const initialData = Data1?.page?.['content-items']?.content
     }
     if(totalData?.length - displayData?.length < 4){
       let page = totalData?.length / itemPerPage
-      console.log("loadJson")
       dispatch( loadJson(page+1))
     }
 
@@ -41,14 +37,14 @@ const initialData = Data1?.page?.['content-items']?.content
 
   }
   return (
-    <Suspense fallback="loading">
-      <div id="scrollableDiv" className='h-[100%] overflow-y-scroll scrollbar-hide ' >
+      <div id="scrollableDiv" className='home h-[85vh] mt-[20px] pt-4 overflow-y-scroll hide-scrollbar px-[30px] bg-neutral-900' >
       <InfiniteScroll
         dataLength={displayData?.length}
         next={fetchMoreData}
         hasMore={loadMore}
         scrollThreshold={0.8}
-        className=" flex gap-x-[30px] gap-y-[90px] flex-wrap  pb-[30px] text-center "
+        className=" flex gap-x-[30px] gap-y-[90px] flex-wrap  pb-[50px] text-center "
+        scrollableTarget="scrollableDiv"
       >
         {
           displayData?.length ? displayData?.map( (item ,index) => <Card key={index} data={item} /> )
@@ -56,7 +52,6 @@ const initialData = Data1?.page?.['content-items']?.content
         }
       </InfiniteScroll>
       </div>
-    </Suspense>
   )
 }
 
