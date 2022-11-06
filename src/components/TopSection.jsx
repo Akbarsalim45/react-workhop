@@ -45,11 +45,11 @@ const TopSection = ({setLoadMore,searchOpen,setSearchOpen}) => {
         <div className="left flex gap-[10px] items-center" onKeyDown={handleKeyPress}>
            { !searchOpen ?
             <>
-            <img src={'public/images/Back.png'} alt="back button" className='w-[20px] h-[20px]' />
+            <img src={'../images/Back.png'} alt="back button" className='w-[20px] h-[20px]' />
               <h4 className="text-xl  text-gray-400">Romantic Comedy</h4>
             </>:
             <>
-              <img src={'public/images/Back.png'} onClick={closeSearch} alt="back button" className='w-[20px] h-[20px]' />
+              <img src={'../images/Back.png'} onClick={closeSearch} alt="back button" className='w-[20px] h-[20px]' />
               <input placeholder="search movies" 
                   ref={inputEl}
                   type="text"
@@ -60,7 +60,7 @@ const TopSection = ({setLoadMore,searchOpen,setSearchOpen}) => {
             </>
             }
         </div>
-        <img src={'public/images/search.png'} onClick={handleSearch} alt="search icon" className='w-[30px] h-[30px]' />
+        <img src={'../images/search.png'} onClick={handleSearch} alt="search icon" className='w-[30px] h-[30px]' />
     </div>
   )
 }
